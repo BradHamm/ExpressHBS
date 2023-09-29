@@ -1,0 +1,1 @@
+// user models will have a one to many relationship with the bookmarks and contain a multitude of preferences regaring light vs dark mode and utils added onto the dashboard
