@@ -28,7 +28,7 @@ Bookmark.init(
         },
         icon: {
             type: DataTypes.STRING,
-            //set up default String if none was selected.
+            defaultValue: "./images/bookmark.svg"
         },
         user_id: {
             type: DataTypes.INTEGER,
@@ -55,5 +55,6 @@ Bookmark.addHook('beforeCreate', (bookmark) => {
         bookmark.icon = `IconWasNotSet`; //helper function here to randomly select an icon if the user does not select one
     }
 }
-
 )
+
+module.exports = Bookmark;

@@ -1,0 +1,20 @@
+[
+    {
+        "username": "Instagram",
+        "url": "Instagram.com",
+        "icon": "./images/instagram.svg",
+        "user_id": 1
+    },
+    {
+        "username": "Gmail",
+        "url": "Gmail.com",
+        "icon": "./images/user.svg",
+        "user_id": 2
+    },
+    {
+        "username": "LinkedIn",
+        "url": "Linkedin.com",
+        "icon": "./images/linkedin.svg",
+        "user_id": 3
+    }
+]

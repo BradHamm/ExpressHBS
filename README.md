@@ -28,13 +28,18 @@ Provide instructions for setting up and running the project locally. Include pre
 
 Explain how to use the project, including examples or code snippets if applicable.
 
-## Dependencies
+## Dependencies and Technologies
 
 Package dependencies:
 
 - Node.js
 - Express.js
 - Handlebars.js
+
+SVG Resources:
+
+- Credit for all SVG images go to https://feathericons.com/
+
 
 
 ## Contributing

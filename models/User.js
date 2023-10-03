@@ -10,6 +10,7 @@ User.init (
             type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
+            autoIncrement: true
         },
         username: {
             type:DataTypes.STRING,
@@ -25,10 +26,23 @@ User.init (
                 len: [6,18],
             },
         },
-        darkmode: {
-            type: DataTypes.BOOLEAN,
+        email: {
+            type: DataTypes.STRING,
+            validate: {
+                isEmail: {
+                    msg: "Please enter a valid email address."
+                },
+            },
+        },
+        theme: {
+            type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: false,
+            defaultValue: "light",
+            validate: {
+                is: {
+                    args: ["dark", "light", "melon", "berry"]
+                }
+            }
         },
     },
     {
@@ -39,3 +53,5 @@ User.init (
         modelName: 'user',
     }
 )
+
+module.exports = User;
