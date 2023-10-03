@@ -15,7 +15,7 @@ const seedDatabase = async () => {
     for (const bookmark of bookmarkData) {
         await Bookmark.create({
             ...bookmark,
-            user_id: users[Math.floor(Math.random() * users.length)].id,
+            user_id: users[Math.floor(Math.random() * users.length - 1)].id, //subtracted one to match the id's
         });
     }
 

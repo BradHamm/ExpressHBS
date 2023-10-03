@@ -9,3 +9,5 @@ User.hasMany(Bookmark, {
 Bookmark.belongsTo(User, {
     foreignKey: 'user_id'
 }); //Bookmarks each belong to one individual user
+
+module.exports = { User, Bookmark };
