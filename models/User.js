@@ -16,15 +16,12 @@ User.init (
             type:DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [6,18]
+                len: [6,30]
             },
         },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [6,18],
-            },
         },
         email: {
             type: DataTypes.STRING,
@@ -36,18 +33,13 @@ User.init (
         },
         theme: {
             type: DataTypes.STRING,
-            allowNull: false,
             defaultValue: "light",
-            validate: {
-                is: {
-                    args: ["dark", "light", "melon", "berry"]
-                }
-            }
+            allowNull: true, //set up args for validate later
         },
     },
     {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'user',
