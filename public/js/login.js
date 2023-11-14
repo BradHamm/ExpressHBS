@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
         });
 
         if (response.ok) {
-            console.log({ response, username, password });
+            window.location.href = '/';
         } else {
             alert(response.statusText);
             console.log(response);

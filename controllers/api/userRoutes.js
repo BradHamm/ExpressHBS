@@ -37,38 +37,39 @@ router.get('/user/:id', async (req,res) => {
   }
 });
 
-router.post('/login', async (req,res) => {
+router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { username: req.body.username } });
 
-    if (!userData) { //we know that the user does exist
-      res
-        .status(400)
-        .json({ message: 'Incorrect username or password, please try again.' })
-        return;
+    if (!userData) {
+      res.status(400).json({ message: 'Incorrect username or password, please try again.' });
+      return;
     }
 
-    bcrypt.compare(req.body.password, userData.password, (err, result) => {
+    bcrypt.compare(req.body.password, userData.password, async (err, result) => {
       if (err) {
         res.status(500).json({ message: 'Error during password comparison.', error: err.message });
       } else {
         if (result) {
           console.log("Password match.");
-          req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
-      
-            res.json({ user: userData, message: "User now logged in."}) //remove after testing
+
+          await new Promise((resolve) => {
+            req.session.save(() => {
+              req.session.user_id = userData.id;
+              req.session.logged_in = true;
+              resolve();
+            });
           });
+
+          res.status(200).json({ message: 'Login successful.' });
         } else {
           console.log("Incorrect password, try again.");
+          res.status(401).json({ message: 'Incorrect password, try again.' });
         }
       }
-
-    })
-
-  } catch(err) {
-    res.status(500).json({ message: 'Error: failed login.'});
+    });
+  } catch (err) {
+    res.status(500).json({ message: 'Error: failed login.' });
   }
 });
 
