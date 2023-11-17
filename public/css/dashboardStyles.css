@@ -1,1 +1,18 @@
+.collapsed {
+    display: none;
+}
 
+.centered-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(-50px); /* Initially shifted up */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.centered-form.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
