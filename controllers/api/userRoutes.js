@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 // Define a GET route
-router.get('/allUsers', async (req, res) => {
+router.get('/allUsers', async (req, res) => { //add auth
   try {
     const users = await User.findAll();
 
@@ -17,7 +17,7 @@ router.get('/allUsers', async (req, res) => {
   }
 });
 
-router.get('/user/:id', async (req,res) => {
+router.get('/user/:id', async (req,res) => { //add auth
 
   const userId = req.params.id;
 
@@ -96,7 +96,7 @@ router.post('/signup', async (req,res) => {
 
   req.session.save(() => {
     req.session.user_id = userData.id;
-    req.session.logged_in = true;
+    // req.session.logged_in = true;
 
     res.status(200).json({user: userData, message: "User is now logged in"});
   })

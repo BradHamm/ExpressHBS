@@ -17,8 +17,8 @@ router.get('/', auth, async (req, res) => {
         const bookmarks = await Bookmark.findAll({
             where: { user_id: userId },
         });
-
-        res.render('dashboard', { bookmarks, logged_in: req.session.logged_in });
+        console.log(bookmarks);
+        res.render('dashboard', { bookmarks });
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');

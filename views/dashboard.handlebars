@@ -1,6 +1,42 @@
-<h1>This is a test.</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/dashboardStyles.css">
+    <title>Dashboard</title>
+</head>
 
-<h2 draggable="true">Drag One</h2>
-<h2 draggable="true">Drag Two</h2>
-<h2 draggable="true">Drag Three</h2>
+<body>
+    <section>
+        <h2>Bookmarks:</h2>
+        <ul id="bookmarksList">
+            {{#each bookmarks}}
+                <li>{{this.dataValues.name}}</li>
+            {{/each}}
+        </ul>
+    </section>
 
+    <button id="toggleFormButton">Toggle Form</button>
+
+    <section class="bookmark-form centered-form">
+        <div class="form-group">
+            <label for="bookmark-name">Name:</label>
+            <input class="form-input" type="text" id="new-bookmark-name">
+        </div>
+        <div class="form-group">
+            <label for="bookmark-url">Url:</label>
+            <input class="form-input" type="text" id="new-bookmark-url">
+        </div>
+        <div class="form-group">
+            <label for="bookmark-icon">Icon:</label>
+            <input class="form-input" type="text" id="new-bookmark-icon">
+        </div>
+        <div class="form-group">
+            <button id="newBookmarkButton" type="submit">Create Bookmark!</button>
+        </div>
+    </section>
+
+    <script src="../public/js/dashboard.js"></script>
+</body>
+</html>

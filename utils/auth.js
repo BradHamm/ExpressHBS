@@ -1,9 +1,10 @@
 const auth = (req, res, next) => {
-    if (!req.session.logged_in) {
-      res.redirect('/login'); // redirect to the login page if not logged in
-    } else {
-      next(); // proceed to the next middleware or route handler
-    }
+  if (req.session.user_id) {
+    req.session.lastAccess = Date.now();
+    next();
+  } else {
+    res.redirect('/login');
+  }
   };
 
   module.exports = auth;
